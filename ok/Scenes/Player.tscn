@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://6sxsty8m28bo"]
+[gd_scene load_steps=28 format=3 uid="uid://6sxsty8m28bo"]
 
 [ext_resource type="Script" uid="uid://chv6kkukj3e0k" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://bsawikr7lrybr" path="res://Assets/sprites/Character/Character base.png" id="1_rpqav"]
@@ -6,6 +6,18 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_1e7my"]
 atlas = ExtResource("1_rpqav")
 region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x63xi"]
+atlas = ExtResource("1_rpqav")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2e8t"]
+atlas = ExtResource("1_rpqav")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qidb7"]
+atlas = ExtResource("1_rpqav")
+region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyqiw"]
 atlas = ExtResource("1_rpqav")
@@ -95,6 +107,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_x63xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2e8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qidb7")
+}],
+"loop": false,
+"name": &"Hurt Animation",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kyqiw")
 }, {
 "duration": 1.0,
@@ -175,12 +201,12 @@ animations = [{
 size = Vector2(11, 21)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-collision_mask = 2
+collision_layer = 2
 script = ExtResource("1_kyqiw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bhhdu")
-animation = &"Falling animation"
+animation = &"Hurt Animation"
 autoplay = "Idle animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

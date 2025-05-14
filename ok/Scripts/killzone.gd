@@ -4,10 +4,11 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	print("SNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKE")
-	Engine.time_scale = 0.5
-	body.get_node("CollisionShape2D").queue_free()
+	Global.hurt = 1
+	Engine.time_scale = 1
 	timer.start()
 
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1
+	Global.hurt = 0
 	get_tree().reload_current_scene()
