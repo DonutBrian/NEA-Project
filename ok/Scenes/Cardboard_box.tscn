@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://yw40oqnavwvv"]
 
 [ext_resource type="Script" uid="uid://bt6e6vrksgsud" path="res://Scripts/cardboard_box.gd" id="1_cosua"]
-[ext_resource type="Texture2D" uid="uid://u6iipnjbfj3y" path="res://Assets/sprites/CardboardBox.png" id="1_ph33a"]
+[ext_resource type="Texture2D" path="res://Assets/sprites/CardboardBox.png" id="1_ph33a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cosua"]
 size = Vector2(16, 16)
