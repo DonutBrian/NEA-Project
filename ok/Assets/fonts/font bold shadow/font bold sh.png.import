@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://pj0y0ut0nu8w"
-path="res://.godot/imported/font bold sh.png-391f72dac939c32e3086662e52c64a67.ctex"
+path="res://.godot/imported/font bold sh.png-adfa95213bc74fa5cca84956e4e9e9be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fonts/font bold shadow/font bold sh.png"
-dest_files=["res://.godot/imported/font bold sh.png-391f72dac939c32e3086662e52c64a67.ctex"]
+source_file="res://Assets/fonts/font bold shadow/font bold sh.png"
+dest_files=["res://.godot/imported/font bold sh.png-adfa95213bc74fa5cca84956e4e9e9be.ctex"]
 
 [params]
 

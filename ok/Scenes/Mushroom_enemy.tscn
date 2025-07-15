@@ -1,10 +1,10 @@
 [gd_scene load_steps=58 format=3 uid="uid://b0hukwv05cqde"]
 
-[ext_resource type="Texture2D" uid="uid://dek2tevsb15j3" path="res://Assets/Sprites/Mushroom/Mushroom without VFX/Mushroom-Idle.png" id="1_ovrym"]
+[ext_resource type="Texture2D" uid="uid://dek2tevsb15j3" path="res://Assets/sprites/Mushroom/Mushroom without VFX/Mushroom-Idle.png" id="1_ovrym"]
 [ext_resource type="Script" uid="uid://cw6erwaxsv450" path="res://Scripts/mushroom_enemy.gd" id="1_pmxip"]
-[ext_resource type="Texture2D" uid="uid://b0u5rhnypi8w0" path="res://Assets/Sprites/Mushroom/Mushroom without VFX/Mushroom-AttackWithStun.png" id="2_pmxip"]
+[ext_resource type="Texture2D" uid="uid://b0u5rhnypi8w0" path="res://Assets/sprites/Mushroom/Mushroom without VFX/Mushroom-AttackWithStun.png" id="2_pmxip"]
 [ext_resource type="PackedScene" uid="uid://ba24a446tdrw6" path="res://Scenes/killzone.tscn" id="4_0e6vh"]
-[ext_resource type="Texture2D" uid="uid://u0j58lh1l27j" path="res://Assets/Sprites/Mushroom/Mushroom with VFX/Mushroom-Stun.png" id="4_vex4l"]
+[ext_resource type="Texture2D" uid="uid://u0j58lh1l27j" path="res://Assets/sprites/Mushroom/Mushroom with VFX/Mushroom-Stun.png" id="4_vex4l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0e6vh"]
 atlas = ExtResource("2_pmxip")
@@ -277,7 +277,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_svs3f")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack Animation",
 "speed": 12.0
 }, {
@@ -362,7 +362,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ec6pd")
 }],
-"loop": false,
+"loop": true,
 "name": &"Stun Animation",
 "speed": 9.0
 }]
@@ -378,37 +378,42 @@ script = ExtResource("1_pmxip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ywn3i")
-animation = &"Stun Animation"
+animation = &"Idle Animation"
 autoplay = "Idle Animation"
 
 [node name="Killzone" parent="." instance=ExtResource("4_0e6vh")]
+collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(0, 21.5)
 shape = SubResource("RectangleShape2D_n6app")
 
-[node name="Stun zone" type="Area2D" parent="."]
-collision_mask = 2
+[node name="Stun zone" type="StaticBody2D" parent="."]
+position = Vector2(0, 2)
+collision_layer = 32
 
-[node name="RayCastTop" type="CollisionShape2D" parent="Stun zone"]
+[node name="Stun area" type="CollisionShape2D" parent="Stun zone"]
 position = Vector2(2.5, 5.5)
 shape = SubResource("RectangleShape2D_0e6vh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="Stun timer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, 16)
 target_position = Vector2(-15, 0)
-collision_mask = 2
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, 16)
 target_position = Vector2(15, 0)
-collision_mask = 2
 
-[node name="Timer" type="Timer" parent="."]
-
-[node name="Stun timer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="RayCastUp" type="RayCast2D" parent="."]
+position = Vector2(0, 17)
+target_position = Vector2(0, -23)
 
 [connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]
-[connection signal="body_entered" from="Stun zone" to="." method="_on_stun_zone_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Stun timer" to="." method="_on_stun_timer_timeout"]

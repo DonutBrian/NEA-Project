@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpuhxdvllc2fc"
-path="res://.godot/imported/font extend.png-81f016ae4d0ce3c47b7bb88827e689b8.ctex"
+path="res://.godot/imported/font extend.png-abef71000d5b815bec4b94b5c27a6268.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fonts/plain2 extended v2/font extend.png"
-dest_files=["res://.godot/imported/font extend.png-81f016ae4d0ce3c47b7bb88827e689b8.ctex"]
+source_file="res://Assets/fonts/plain2 extended v2/font extend.png"
+dest_files=["res://.godot/imported/font extend.png-abef71000d5b815bec4b94b5c27a6268.ctex"]
 
 [params]
 

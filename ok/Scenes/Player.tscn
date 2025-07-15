@@ -1,7 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://6sxsty8m28bo"]
+[gd_scene load_steps=39 format=3 uid="uid://6sxsty8m28bo"]
 
 [ext_resource type="Script" uid="uid://chv6kkukj3e0k" path="res://Scripts/player.gd" id="1_kyqiw"]
-[ext_resource type="Texture2D" uid="uid://bsawikr7lrybr" path="res://Assets/Sprites/Character/Character base.png" id="1_rpqav"]
+[ext_resource type="Texture2D" uid="uid://bsawikr7lrybr" path="res://Assets/sprites/Character/Character base.png" id="1_rpqav"]
+[ext_resource type="Script" uid="uid://dk8ef3kcsqxgw" path="res://Scripts/player_money.gd" id="3_gntrk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c43xd"]
 atlas = ExtResource("1_rpqav")
@@ -122,6 +123,10 @@ region = Rect2(128, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5v66d"]
 atlas = ExtResource("1_rpqav")
 region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avx33"]
+atlas = ExtResource("1_rpqav")
+region = Rect2(32, 128, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bhhdu"]
 animations = [{
@@ -254,6 +259,14 @@ animations = [{
 "loop": true,
 "name": &"Sprint animation",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avx33")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_megsn"]
@@ -261,36 +274,71 @@ size = Vector2(11, 21)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_avx33"]
 particle_flag_align_y = true
-emission_shape = 2
-emission_sphere_radius = 0.01
+spread = 17.0
 initial_velocity_min = 329.54
 initial_velocity_max = 329.54
 gravity = Vector3(0, 98, 0)
-color = Color(0.390506, 0.145401, 0.395534, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
+size = Vector2(13, 9)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-collision_layer = 2
+collision_mask = 42
 script = ExtResource("1_kyqiw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_bhhdu")
-animation = &"Dash animation"
+animation = &"Idle animation"
 autoplay = "Idle animation"
-frame_progress = 0.86696
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+[node name="Player hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_megsn")
-
-[node name="Dash timer" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
 
 [node name="Dash Particles" type="GPUParticles2D" parent="."]
 position = Vector2(0, 6)
 emitting = false
-amount = 30
+amount = 15
 lifetime = 0.3
 one_shot = true
-explosiveness = 0.5
+explosiveness = 0.1
 process_material = SubResource("ParticleProcessMaterial_avx33")
+
+[node name="Attack Area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Area"]
+light_mask = 4
+shape = SubResource("RectangleShape2D_kyqiw")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Dash timer" type="Timer" parent="Node"]
+wait_time = 0.4
+one_shot = true
+
+[node name="Attack CD" type="Timer" parent="Node"]
+wait_time = 0.25
+one_shot = true
+
+[node name="Attack timer" type="Timer" parent="Node"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="Player Money" type="Label" parent="."]
+z_index = 100
+z_as_relative = false
+offset_left = -144.0
+offset_top = -79.0
+offset_right = -104.0
+offset_bottom = -56.0
+script = ExtResource("3_gntrk")
+
+[connection signal="body_entered" from="Attack Area" to="." method="_on_attack_area_body_entered"]
+[connection signal="timeout" from="Node/Attack CD" to="." method="_on_attack_cd_timeout"]
+[connection signal="timeout" from="Node/Attack timer" to="." method="_on_attack_timer_timeout"]

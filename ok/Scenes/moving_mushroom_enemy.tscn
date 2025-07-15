@@ -1,9 +1,9 @@
 [gd_scene load_steps=47 format=3 uid="uid://bbkpcg5ksw08m"]
 
-[ext_resource type="Texture2D" uid="uid://b0u5rhnypi8w0" path="res://Assets/Sprites/Mushroom/Mushroom without VFX/Mushroom-AttackWithStun.png" id="2_ansyg"]
+[ext_resource type="Texture2D" uid="uid://b0u5rhnypi8w0" path="res://Assets/sprites/Mushroom/Mushroom without VFX/Mushroom-AttackWithStun.png" id="2_ansyg"]
 [ext_resource type="Script" uid="uid://dgxs8y72os6yl" path="res://Scripts/moving_mushroom_enemy.gd" id="2_nxpg4"]
-[ext_resource type="Texture2D" uid="uid://dek2tevsb15j3" path="res://Assets/Sprites/Mushroom/Mushroom without VFX/Mushroom-Idle.png" id="3_xjq2n"]
-[ext_resource type="Texture2D" uid="uid://f24bjp0lous7" path="res://Assets/Sprites/Mushroom/Mushroom without VFX/Mushroom-Run.png" id="4_s2id7"]
+[ext_resource type="Texture2D" uid="uid://dek2tevsb15j3" path="res://Assets/sprites/Mushroom/Mushroom without VFX/Mushroom-Idle.png" id="3_xjq2n"]
+[ext_resource type="Texture2D" uid="uid://f24bjp0lous7" path="res://Assets/sprites/Mushroom/Mushroom without VFX/Mushroom-Run.png" id="4_s2id7"]
 [ext_resource type="PackedScene" uid="uid://ba24a446tdrw6" path="res://Scenes/killzone.tscn" id="5_carv6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqcim"]
