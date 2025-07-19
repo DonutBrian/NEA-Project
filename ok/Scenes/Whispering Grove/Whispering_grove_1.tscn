@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://bnfi7ngnb1qta"]
+[gd_scene load_steps=10 format=4 uid="uid://bnfi7ngnb1qta"]
 
 [ext_resource type="PackedScene" uid="uid://6sxsty8m28bo" path="res://Scenes/Player.tscn" id="1_l2x4t"]
 [ext_resource type="Texture2D" uid="uid://crc70p0igh1dk" path="res://Assets/sprites/GrassDirt.png" id="2_pbtnt"]
 [ext_resource type="PackedScene" uid="uid://8f42qurs35p4" path="res://Scenes/doorway.tscn" id="3_co5vv"]
+[ext_resource type="PackedScene" uid="uid://kw3fikugmqa8" path="res://Scenes/double_jump_item.tscn" id="4_pd578"]
+[ext_resource type="PackedScene" uid="uid://ba24a446tdrw6" path="res://Scenes/killzone.tscn" id="5_pr1jh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_phcop"]
 texture = ExtResource("2_pbtnt")
@@ -108,10 +110,13 @@ sources/0 = SubResource("TileSetAtlasSource_phcop")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0oub5"]
 size = Vector2(22, 46)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pr1jh"]
+distance = -133.0
+
 [node name="Area 2" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_l2x4t")]
-position = Vector2(5, -2)
+position = Vector2(-4, 5)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAACAAEAAAABAAAAAAADAAEAAAABAAAAAAAEAAEAAAABAAAAAAAFAAEAAAABAAAAAAAGAAEAAAABAAAAAAAHAAEAAAABAAAAAAAIAAEAAAABAAAAAAD//wEAAAABAAAAAAD+/wEAAAABAAAAAAD9/wEAAAABAAEAAAD9/wAAAAACAAEAAAD9////AAACAAEAAAD9//7/AAACAAEAAAD9//3/AAABAAAAAAD+//3/AAABAAAAAAD///3/AAABAAAAAAA=")
@@ -128,5 +133,14 @@ shape = SubResource("RectangleShape2D_0oub5")
 [node name="Door CD" type="Timer" parent="Doorway"]
 wait_time = 0.5
 one_shot = true
+
+[node name="double jump item" parent="." instance=ExtResource("4_pd578")]
+position = Vector2(51, -16)
+
+[node name="Killzone" parent="." instance=ExtResource("5_pr1jh")]
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("WorldBoundaryShape2D_pr1jh")
 
 [connection signal="timeout" from="Doorway/Door CD" to="Doorway" method="_on_door_cd_timeout"]

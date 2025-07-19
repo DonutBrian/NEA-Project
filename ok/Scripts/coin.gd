@@ -7,7 +7,7 @@ func _ready():
 	
 	if Global.collected_coins.has(coin_id):
 		queue_free()
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if not Global.collected_coins.has(coin_id):
 		Global.collected_coins[coin_id] = true
 		Global.money += 1

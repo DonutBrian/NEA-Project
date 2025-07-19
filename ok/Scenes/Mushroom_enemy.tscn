@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b0hukwv05cqde"]
+[gd_scene load_steps=61 format=3 uid="uid://b0hukwv05cqde"]
 
 [ext_resource type="Texture2D" uid="uid://dek2tevsb15j3" path="res://Assets/sprites/Mushroom/Mushroom without VFX/Mushroom-Idle.png" id="1_ovrym"]
 [ext_resource type="Script" uid="uid://cw6erwaxsv450" path="res://Scripts/mushroom_enemy.gd" id="1_pmxip"]
@@ -367,25 +367,41 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="Animation" id="Animation_0e6vh"]
+resource_name = "Attack animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vex4l"]
+_data = {
+&"Attack animation": SubResource("Animation_0e6vh")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n6app"]
-size = Vector2(12, 21)
+size = Vector2(12, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e6vh"]
-size = Vector2(25, 11)
+size = Vector2(24.5, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vex4l"]
+size = Vector2(24.5, 2)
 
 [node name="Mushroom enemy" type="Node2D"]
 script = ExtResource("1_pmxip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ywn3i")
-animation = &"Idle Animation"
+animation = &"Attack Animation"
 autoplay = "Idle Animation"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_vex4l")
+}
+
 [node name="Killzone" parent="." instance=ExtResource("4_0e6vh")]
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(0, 21.5)
+position = Vector2(0, 19.5)
 shape = SubResource("RectangleShape2D_n6app")
 
 [node name="Stun zone" type="StaticBody2D" parent="."]
@@ -393,14 +409,14 @@ position = Vector2(0, 2)
 collision_layer = 32
 
 [node name="Stun area" type="CollisionShape2D" parent="Stun zone"]
-position = Vector2(2.5, 5.5)
+position = Vector2(1.25, 1.5)
 shape = SubResource("RectangleShape2D_0e6vh")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.5
 
 [node name="Stun timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, 16)
@@ -410,10 +426,13 @@ target_position = Vector2(-15, 0)
 position = Vector2(0, 16)
 target_position = Vector2(15, 0)
 
-[node name="RayCastUp" type="RayCast2D" parent="."]
-position = Vector2(0, 17)
-target_position = Vector2(0, -23)
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.25, -1)
+shape = SubResource("RectangleShape2D_vex4l")
 
 [connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Stun timer" to="." method="_on_stun_timer_timeout"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

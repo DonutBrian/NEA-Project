@@ -4,7 +4,6 @@
 
 [node name="Killzone" type="Area2D"]
 collision_layer = 16
-collision_mask = 2
 script = ExtResource("1_jvagm")
 
 [node name="Timer" type="Timer" parent="."]

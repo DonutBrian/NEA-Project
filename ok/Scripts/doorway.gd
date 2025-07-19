@@ -24,11 +24,11 @@ func _on_body_entered(body: Node2D) -> void:
 	Global.world_pos[get_tree().current_scene.name] = body.global_position + offset
 		
 	if Global.world_area == 0:
-		call_deferred("Change_scene","res://Scenes/area_2.tscn")
+		call_deferred("Change_scene","res://Scenes/Whispering Grove/Whispering_grove_1.tscn")
 		Global.world_area = 1
 		
 	elif Global.world_area == 1:
-		call_deferred("Change_scene","res://Scenes/StartArea.tscn")
+		call_deferred("Change_scene","res://Scenes/test.tscn")
 		Global.world_area = 0
 
 func Change_scene(path: String) -> void:

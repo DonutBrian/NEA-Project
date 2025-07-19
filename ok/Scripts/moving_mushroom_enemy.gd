@@ -46,6 +46,6 @@ func _on_timer_timeout() -> void:
 	sprite.play("Idle Animation")
 
 
-func _on_killzone_body_entered(body: Node2D) -> void:
+func _on_killzone_body_entered(_body: Node2D) -> void:
 	set_process(false)
 	

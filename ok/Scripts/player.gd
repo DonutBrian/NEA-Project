@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	# Allows for the player to Jump as well as Double jump if they press again
 	if is_on_floor():
 		Global.jump_count = 0
-	if Input.is_action_just_pressed("Jump") and Global.jump_count < Global.MAX_JUMP:
+	if Input.is_action_just_pressed("Jump") and Global.jump_count < Global.max_jump:
 		velocity.y = Global.JUMP_VELOCITY 
 		Global.jump_count += 1
 
