@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn6x8lh6of4k"]
-
-[ext_resource type="Script" uid="uid://b7rrjc0x4pr5y" path="res://Scripts/breakable.gd" id="1_pwuh6"]
-
-[node name="Breakable" type="StaticBody2D" groups=["Breakable"]]
-collision_layer = 8
-script = ExtResource("1_pwuh6")
