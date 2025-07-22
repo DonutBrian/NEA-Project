@@ -28,7 +28,7 @@ func _on_body_entered(body: Node2D) -> void:
 		Global.world_area = 1
 		
 	elif Global.world_area == 1:
-		call_deferred("Change_scene","res://Scenes/test.tscn")
+		call_deferred("Change_scene","res://Scenes/Test.tscn")
 		Global.world_area = 0
 
 func Change_scene(path: String) -> void:

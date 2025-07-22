@@ -82,7 +82,11 @@ func _on_dash_timer_timeout() -> void:
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Breakable"):
 		body.break_apart()
-	
+		print("scoob")
+		
+	if body.is_in_group("Enemies"):
+		body.hit()
+		
 func change_sprite(animation:String) -> void:
 	sprite.play(animation)
 
