@@ -283,7 +283,7 @@ gravity = Vector3(0, 98, 0)
 size = Vector2(13, 9)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-collision_mask = 42
+collision_mask = 162
 script = ExtResource("1_kyqiw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -306,7 +306,7 @@ process_material = SubResource("ParticleProcessMaterial_avx33")
 
 [node name="Attack Area" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 8
+collision_mask = 136
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack Area"]

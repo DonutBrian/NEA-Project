@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://7ayu8pl6ydry"]
+[gd_scene load_steps=12 format=4 uid="uid://7ayu8pl6ydry"]
 
 [ext_resource type="PackedScene" uid="uid://6sxsty8m28bo" path="res://Scenes/Player.tscn" id="1_8wi3t"]
 [ext_resource type="Texture2D" uid="uid://crc70p0igh1dk" path="res://Assets/sprites/GrassDirt.png" id="2_3jjd0"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bn6x8lh6of4k" path="res://Scenes/breakable.tscn" id="6_3jjd0"]
 [ext_resource type="PackedScene" uid="uid://8f42qurs35p4" path="res://Scenes/doorway.tscn" id="6_wsl73"]
 [ext_resource type="PackedScene" uid="uid://b0hukwv05cqde" path="res://Scenes/Mushroom_enemy.tscn" id="7_3jjd0"]
-[ext_resource type="PackedScene" uid="uid://bbkpcg5ksw08m" path="res://Scenes/set_distance__mushroom_enemy.tscn" id="8_5d4hc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3jjd0"]
 texture = ExtResource("2_3jjd0")
@@ -116,8 +115,6 @@ size = Vector2(20, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d4hc"]
 size = Vector2(16, 33)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jjd0"]
-
 [node name="StartArea" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_8wi3t")]
@@ -157,13 +154,3 @@ shape = SubResource("RectangleShape2D_5d4hc")
 
 [node name="Mushroom enemy" parent="." instance=ExtResource("7_3jjd0")]
 position = Vector2(-525, -31)
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 64
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-584, -47)
-shape = SubResource("RectangleShape2D_3jjd0")
-
-[node name="Set distance Mushroom Enemy" parent="." instance=ExtResource("8_5d4hc")]
-position = Vector2(-258, 21)

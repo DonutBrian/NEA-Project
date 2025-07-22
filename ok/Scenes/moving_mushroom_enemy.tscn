@@ -301,7 +301,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Moving Mushroom Enemy" type="CharacterBody2D"]
+[node name="Moving Mushroom Enemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 8
+collision_mask = 42
 script = ExtResource("2_nxpg4")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -330,7 +332,7 @@ position = Vector2(0, 17)
 target_position = Vector2(15, 0)
 collision_mask = 2
 
-[node name="RayCastDown" type="RayCast2D" parent="."]
+[node name="RayCastUp" type="RayCast2D" parent="."]
 position = Vector2(0, 17)
 target_position = Vector2(0, -23)
 

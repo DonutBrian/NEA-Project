@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://b0hukwv05cqde"]
+[gd_scene load_steps=62 format=3 uid="uid://b0hukwv05cqde"]
 
 [ext_resource type="Texture2D" uid="uid://dek2tevsb15j3" path="res://Assets/sprites/Mushroom/Mushroom without VFX/Mushroom-Idle.png" id="1_ovrym"]
 [ext_resource type="Script" uid="uid://cw6erwaxsv450" path="res://Scripts/mushroom_enemy.gd" id="1_pmxip"]
@@ -384,7 +384,13 @@ size = Vector2(24.5, 7)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vex4l"]
 size = Vector2(24.5, 2)
 
-[node name="Mushroom enemy" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0e6vh"]
+radius = 8.0
+height = 34.0
+
+[node name="Mushroom enemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 8
+collision_mask = 47
 script = ExtResource("1_pmxip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -404,11 +410,11 @@ libraries = {
 position = Vector2(0, 19.5)
 shape = SubResource("RectangleShape2D_n6app")
 
-[node name="Stun zone" type="StaticBody2D" parent="."]
+[node name="Area2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 2)
-collision_layer = 32
+collision_layer = 40
 
-[node name="Stun area" type="CollisionShape2D" parent="Stun zone"]
+[node name="Stun area" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1.25, 1.5)
 shape = SubResource("RectangleShape2D_0e6vh")
 
@@ -426,13 +432,17 @@ target_position = Vector2(-15, 0)
 position = Vector2(0, 16)
 target_position = Vector2(15, 0)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Stun zone" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stun zone"]
 position = Vector2(1.25, -1)
 shape = SubResource("RectangleShape2D_vex4l")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("CapsuleShape2D_0e6vh")
 
 [connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Stun timer" to="." method="_on_stun_timer_timeout"]
-[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_entered" from="Stun zone" to="." method="_on_area_2d_body_shape_entered"]
