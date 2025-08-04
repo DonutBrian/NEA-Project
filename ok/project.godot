@@ -32,8 +32,9 @@ version_control/autoload_on_startup=true
 
 [global_group]
 
-enemies=""
 Breakable=""
+Player=""
+Enemies=""
 
 [input]
 

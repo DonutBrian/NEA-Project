@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://bnfi7ngnb1qta"]
+[gd_scene load_steps=9 format=4 uid="uid://bnfi7ngnb1qta"]
 
+[ext_resource type="Script" uid="uid://cxoy2iew7cql8" path="res://Scripts/Area Scripts/whispering_grove_1.gd" id="1_1jhxt"]
 [ext_resource type="PackedScene" uid="uid://6sxsty8m28bo" path="res://Scenes/World function/Player.tscn" id="1_l2x4t"]
 [ext_resource type="Texture2D" uid="uid://crc70p0igh1dk" path="res://Assets/sprites/Background/GrassDirt.png" id="2_pbtnt"]
 [ext_resource type="PackedScene" uid="uid://8f42qurs35p4" path="res://Scenes/World function/doorway.tscn" id="3_co5vv"]
 [ext_resource type="PackedScene" path="res://Scenes/Pickups/double_jump_item.tscn" id="5_45qos"]
-[ext_resource type="PackedScene" uid="uid://ba24a446tdrw6" path="res://Scenes/World function/killzone.tscn" id="5_pr1jh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_phcop"]
 texture = ExtResource("2_pbtnt")
@@ -110,10 +110,8 @@ sources/0 = SubResource("TileSetAtlasSource_phcop")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0oub5"]
 size = Vector2(22, 46)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pr1jh"]
-distance = -133.0
-
 [node name="Area 2" type="Node2D"]
+script = ExtResource("1_1jhxt")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_l2x4t")]
 position = Vector2(-4, 5)
@@ -133,11 +131,6 @@ shape = SubResource("RectangleShape2D_0oub5")
 [node name="Door CD" type="Timer" parent="Doorway"]
 wait_time = 0.5
 one_shot = true
-
-[node name="Killzone" parent="." instance=ExtResource("5_pr1jh")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-shape = SubResource("WorldBoundaryShape2D_pr1jh")
 
 [node name="double jump item" parent="." instance=ExtResource("5_45qos")]
 position = Vector2(37, -33)

@@ -283,7 +283,7 @@ gravity = Vector3(0, 98, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
 size = Vector2(13, 9)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 162
 script = ExtResource("1_kyqiw")
 
@@ -334,12 +334,12 @@ zoom = Vector2(6.5, 6.5)
 [node name="Player UI" type="Label" parent="."]
 z_index = 100
 z_as_relative = false
-offset_left = -148.0
-offset_top = -83.0
-offset_right = 148.0
-offset_bottom = 83.0
+offset_left = -145.0
+offset_top = -80.0
+offset_right = 146.0
+offset_bottom = 80.0
 theme_override_fonts/font = ExtResource("3_oiotr")
-theme_override_font_sizes/font_size = 1
+theme_override_font_sizes/font_size = 10
 script = ExtResource("3_akqv8")
 
 [connection signal="body_entered" from="Attack Area" to="." method="_on_attack_area_body_entered"]

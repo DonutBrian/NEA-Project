@@ -1,4 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv1y2qbqpshlb"]
+[gd_scene load_steps=12 format=3 uid="uid://cv1y2qbqpshlb"]
+
+[ext_resource type="FontFile" uid="uid://dd8e4luop57e4" path="res://Assets/fonts/PressStart2P-Regular.ttf" id="1_ex8va"]
+[ext_resource type="Script" uid="uid://b45xa2hhd2iju" path="res://Scripts/death_screen.gd" id="1_hr02y"]
+[ext_resource type="Texture2D" uid="uid://bsawikr7lrybr" path="res://Assets/sprites/Character/Character base.png" id="2_hr02y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b247"]
 bg_color = Color(0, 0, 0, 1)
@@ -8,12 +12,70 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.425529, 0.0147101, 7.21961e-08, 1)
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bpdg"]
+atlas = ExtResource("2_hr02y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihoxw"]
+atlas = ExtResource("2_hr02y")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvlyw"]
+atlas = ExtResource("2_hr02y")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdgx1"]
+atlas = ExtResource("2_hr02y")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8buhr"]
+atlas = ExtResource("2_hr02y")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vui6"]
+atlas = ExtResource("2_hr02y")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbkju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bpdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihoxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvlyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdgx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8buhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vui6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Death Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hr02y")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -2.0
+offset_right = 1923.0
+offset_bottom = 1078.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3b247")
@@ -27,24 +89,38 @@ theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 240
+theme_override_constants/separation = 400
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "GAME OVER"
+theme_override_fonts/font = ExtResource("1_ex8va")
+theme_override_font_sizes/font_size = 90
+text = "You died"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 86
 
 [node name="Restart" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "RESTART"
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_ex8va")
+theme_override_font_sizes/font_size = 80
+text = "Replay"
 
 [node name="Main Menu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("1_ex8va")
+theme_override_font_sizes/font_size = 80
 text = "Main Menu"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(936, 328)
+scale = Vector2(7.26562, 8.125)
+sprite_frames = SubResource("SpriteFrames_dbkju")
+autoplay = "default"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
