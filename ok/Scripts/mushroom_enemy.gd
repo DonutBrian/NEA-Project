@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
-@onready var Hitbox: CollisionShape2D = $Killzone/CollisionShape2D
 @onready var stun_timer: Timer = $"Stun timer"
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
 @onready var ray_cast_right: RayCast2D = $RayCastRight
 @onready var stun_hitbox: CollisionShape2D = $"Stun zone"/CollisionShape2D
 @onready var mushroom_enemy: Node2D = $"."
-@onready var stun_area: CollisionShape2D = $Area2D/"Stun area"
+@onready var stun_area: CollisionShape2D = $"StaticBody2D/Stun Area"
+
+
 var health = 50
 func _process(_delta: float) -> void:
 
@@ -34,7 +35,6 @@ func _on_area_2d_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_i
 		if child is RayCast2D:
 			child.enabled = false
 	stun_hitbox.set_deferred("disabled", true)
-	Hitbox.set_deferred("disabled", true)
 	stun_timer.start()
 
 func _on_timer_timeout() -> void:
@@ -54,7 +54,6 @@ func _on_stun_timer_timeout() -> void:
 		if child is RayCast2D:
 			child.enabled = true
 	stun_hitbox.disabled = false
-	Hitbox.disabled = false
 
 func hit():
 	print("ahhhhhh")

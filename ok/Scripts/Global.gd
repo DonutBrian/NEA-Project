@@ -11,3 +11,4 @@ var world_area = 0
 var money = 0
 var collected_coins = {}
 var max_jump = 1
+var player_health = 5
