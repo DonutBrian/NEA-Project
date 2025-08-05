@@ -12,10 +12,15 @@ var dash_duration = 0.4
 var is_dashing = false
 var dash_direction = Vector2.ZERO
 var attack_cooldown = 0.5
+
 var attacking = false
 var abs_velocity_x = abs(velocity.x)
 var attack_offset_left: = Vector2(-12,0)
 var attack_offset_right = Vector2(12,0)
+
+var knockback_velocity = Vector2.ZERO
+var knockback_duration = 0.2
+var knockback_timer = 0.0
 
 func _ready() -> void:
 	dash_timer.connect("timeout", _on_dash_timer_timeout)
@@ -65,7 +70,14 @@ func _physics_process(delta: float) -> void:
 		attack_area.monitoring = true
 		attack_timer.start()
 		attack_CD.start()
+		
 	character_sprite(direction)
+	if knockback_timer > 0:
+		knockback_timer -= delta
+		velocity = knockback_velocity
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, 50 * delta)
+		move_and_slide()
+		return
 
 	move_and_slide()
 
@@ -76,21 +88,27 @@ func start_dash(input_dir: float) -> void:
 	dash_particles.rotation_degrees = 180 if input_dir < 0 else 0
 	dash_particles.restart()
 
-func _on_dash_timer_timeout() -> void:
-	is_dashing = false
-
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Breakable"):
 		body.break_apart()
-		print("scoob")
 		
 	if body.is_in_group("Enemies"):
 		body.hit()
-		
+		var direction = (body.global_position - self.global_position).normalized()
+		body.apply_knockback(direction, 250)
+
+func apply_knockback(direction:Vector2, strength: float):
+	knockback_velocity = direction.normalized() * strength
+	knockback_timer = knockback_duration
+	
 func change_sprite(animation:String) -> void:
 	sprite.play(animation)
 
 
+
+func _on_dash_timer_timeout() -> void:
+	is_dashing = false
+	
 func _on_attack_cd_timeout() -> void:
 	attacking = false
 

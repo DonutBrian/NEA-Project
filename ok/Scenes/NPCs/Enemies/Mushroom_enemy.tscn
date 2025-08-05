@@ -1,8 +1,10 @@
-[gd_scene load_steps=62 format=3 uid="uid://b0hukwv05cqde"]
+[gd_scene load_steps=84 format=3 uid="uid://b0hukwv05cqde"]
 
 [ext_resource type="Texture2D" uid="uid://dek2tevsb15j3" path="res://Assets/sprites/NPCs/Enemies/Mushroom/Mushroom without VFX/Mushroom-Idle.png" id="1_ovrym"]
 [ext_resource type="Script" uid="uid://cw6erwaxsv450" path="res://Scripts/mushroom_enemy.gd" id="1_pmxip"]
 [ext_resource type="Texture2D" uid="uid://b0u5rhnypi8w0" path="res://Assets/sprites/NPCs/Enemies/Mushroom/Mushroom without VFX/Mushroom-AttackWithStun.png" id="2_pmxip"]
+[ext_resource type="Texture2D" uid="uid://d18neaplqthkc" path="res://Assets/sprites/NPCs/Enemies/Mushroom/Mushroom with VFX/Mushroom-Die.png" id="3_8kick"]
+[ext_resource type="Texture2D" uid="uid://c3wj1wfersea6" path="res://Assets/sprites/NPCs/Enemies/Mushroom/Mushroom with VFX/Mushroom-Hit.png" id="4_aaxbe"]
 [ext_resource type="Texture2D" uid="uid://u0j58lh1l27j" path="res://Assets/sprites/NPCs/Enemies/Mushroom/Mushroom with VFX/Mushroom-Stun.png" id="4_vex4l"]
 [ext_resource type="PackedScene" uid="uid://ba24a446tdrw6" path="res://Scenes/World function/killzone.tscn" id="5_gmejj"]
 
@@ -101,6 +103,86 @@ region = Rect2(1760, 0, 80, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_svs3f"]
 atlas = ExtResource("2_pmxip")
 region = Rect2(1840, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drthe"]
+atlas = ExtResource("3_8kick")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4ho1"]
+atlas = ExtResource("3_8kick")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81rtk"]
+atlas = ExtResource("3_8kick")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjes0"]
+atlas = ExtResource("3_8kick")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di4hi"]
+atlas = ExtResource("3_8kick")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad73a"]
+atlas = ExtResource("3_8kick")
+region = Rect2(400, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfpaa"]
+atlas = ExtResource("3_8kick")
+region = Rect2(480, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seub5"]
+atlas = ExtResource("3_8kick")
+region = Rect2(560, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u86r"]
+atlas = ExtResource("3_8kick")
+region = Rect2(640, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81nok"]
+atlas = ExtResource("3_8kick")
+region = Rect2(720, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mj86"]
+atlas = ExtResource("3_8kick")
+region = Rect2(800, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkx41"]
+atlas = ExtResource("3_8kick")
+region = Rect2(880, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu6tq"]
+atlas = ExtResource("3_8kick")
+region = Rect2(960, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5rb2"]
+atlas = ExtResource("3_8kick")
+region = Rect2(1040, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xphme"]
+atlas = ExtResource("3_8kick")
+region = Rect2(1120, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36cwl"]
+atlas = ExtResource("4_aaxbe")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a54qe"]
+atlas = ExtResource("4_aaxbe")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu36t"]
+atlas = ExtResource("4_aaxbe")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c204k"]
+atlas = ExtResource("4_aaxbe")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b13ie"]
+atlas = ExtResource("4_aaxbe")
+region = Rect2(320, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbqgx"]
 atlas = ExtResource("1_ovrym")
@@ -283,6 +365,76 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_drthe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4ho1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81rtk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjes0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di4hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad73a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfpaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_seub5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u86r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81nok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mj86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkx41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu6tq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5rb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xphme")
+}],
+"loop": false,
+"name": &"Death Animation",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36cwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a54qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu36t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c204k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b13ie")
+}],
+"loop": true,
+"name": &"Hit Animation",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vbqgx")
 }, {
 "duration": 1.0,
@@ -376,7 +528,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxbfn"]
-radius = 8.0
+radius = 6.0
 height = 32.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gbw0o"]
@@ -396,7 +548,7 @@ script = ExtResource("1_pmxip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ywn3i")
-animation = &"Attack Animation"
+animation = &"Hit Animation"
 autoplay = "Idle Animation"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
@@ -421,7 +573,6 @@ collision_layer = 10
 
 [node name="Stun Area" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_cxbfn")
-one_way_collision = true
 
 [node name="Stun zone" type="Area2D" parent="."]
 position = Vector2(1, -1)
@@ -429,12 +580,6 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stun zone"]
 shape = SubResource("RectangleShape2D_vex4l")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.5
-
-[node name="Stun timer" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, 16)
@@ -444,6 +589,27 @@ target_position = Vector2(-15, 0)
 position = Vector2(0, 16)
 target_position = Vector2(15, 0)
 
+[node name="Timers" type="Node" parent="."]
+
+[node name="Raycast disable timer" type="Timer" parent="Timers"]
+wait_time = 2.5
+one_shot = true
+
+[node name="Stun timer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Death timer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Hit timer" type="Timer" parent="Timers"]
+one_shot = true
+
 [connection signal="body_shape_entered" from="Stun zone" to="." method="_on_area_2d_body_shape_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Stun timer" to="." method="_on_stun_timer_timeout"]
+[connection signal="body_shape_entered" from="Stun zone" to="." method="_on_stun_zone_body_shape_entered"]
+[connection signal="timeout" from="Timers/Raycast disable timer" to="." method="_on_raycast_disable_timer_timeout"]
+[connection signal="timeout" from="Timers/Raycast disable timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timers/Stun timer" to="." method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="Timers/Death timer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="Timers/Hit timer" to="." method="_on_hit_timer_timeout"]

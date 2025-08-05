@@ -9,14 +9,14 @@ var player_can_take_damage = true
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		print("body entered")
 		player_inside = true
-		
+		print("yes")
 func _on_body_exited(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.is_in_group("Player"):
 		player_inside = false
+		print("stop")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_inside == true and player_can_take_damage == true:
 		if Global.player_health > 0:
 			Global.player_health -= 1
@@ -31,7 +31,6 @@ func _process(delta: float) -> void:
 
 
 func _on_i_frame_timeout() -> void:
-	print("timer end")
 	player_can_take_damage = true
 	
 func _on_death_timer_timeout() -> void:
